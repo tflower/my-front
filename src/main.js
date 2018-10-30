@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import App from './app.vue'
 
-
+console.log(App)
 new Vue({
-    el: '#app',
-    components: {App},
-    template: '<App/>'
-})
+    data:{
+        mes:1
+    },
+    components: { App },
+    render: h => h(App) 
+}).$mount('#app')

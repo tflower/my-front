@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="box">mes</div>
+        <div class="box">{{ mes }}</div>
     </div>
 </template>
 <script>
