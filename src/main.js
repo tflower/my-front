@@ -1,11 +1,16 @@
 import Vue from 'vue'
-import App from './app.vue'
+import ElementUi from 'element-ui'
 
-console.log(App)
+import router from './router/index'
+
+
+import App from './app'
+Vue.use(ElementUi)
+
+
 new Vue({
-    data:{
-        mes:1
-    },
+    el: '#app',
+    router,
     components: { App },
-    render: h => h(App) 
-}).$mount('#app')
+    template: '<App/>'
+})

@@ -1,15 +1,15 @@
 let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-
-
+let CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
-    entry: path.resolve(__dirname, '../src/main.js'),
+    entry: {
+        index: path.resolve(__dirname, '../src/main.js')
+    },
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'index.js'
     },
-    devtool: 'inline-source-map',
     module: {
         rules: [
             {
@@ -22,10 +22,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components)/,  // (不处理node_modules 和 bower_components下的js文件) 优化处理加快速度
                 use: {
-                    loader: 'babel-loader',
-                    options: {         // options选项
-                        plugins: [require('babel-plugin-transform-object-rest-spread')] // plugin是需要的插件       
-                    }
+                    loader: 'babel-loader'
                 }
             },
            {
@@ -40,11 +37,15 @@ module.exports = {
     },
     resolve: {
         alias: {
-            Component: path.resolve(__dirname, 'src/component'),
-            Asset: path.resolve(__dirname, 'src/asset')
-        }
+            '@Component': path.resolve(__dirname, '../src/component/'),
+            '@Asset': path.resolve(__dirname, '../src/asset/'),
+            '@Page': path.resolve(__dirname, '../src/page/'),
+            'vue$': 'vue/dist/vue.esm.js'
+        },
+        extensions: ['.vue', '.wasm', '.mjs', '.js', '.json']
     },
     plugins: [
+        new CleanWebpackPlugin(path.resolve(__dirname, '../dist/'),{allowExternal:true}),
         new HtmlWebpackPlugin({template: path.resolve(__dirname, '../index.html')}),
         new VueLoaderPlugin()
     ],
