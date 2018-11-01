@@ -3,6 +3,24 @@ let path = require('path');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.config');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+baseConfig.module.rules.push(
+    {
+      test: /\.css$/,
+      use: ExtractTextPlugin.extract(
+        {
+          use: [
+            'css-loader'
+          ],
+          fallback: 'style-loader'
+        }
+      ),
+      exclude: /node_modules/
+    }
+  );
+console.log(baseConfig.module.rules)
 module.exports = merge(baseConfig, {
     mode: 'production',
     entry: {
@@ -12,7 +30,10 @@ module.exports = merge(baseConfig, {
         filename: '[name].[hash].bundle.js'
     },
     plugins: [
-        new UglifyJsPlugin()
+        new UglifyJsPlugin(),
+        // new BundleAnalyzerPlugin(),
+        new OptimizeCssAssetsPlugin(),
+        new ExtractTextPlugin({filename: 'main.[hash].css'})
     ],
     optimization: {
         splitChunks: {
@@ -36,5 +57,5 @@ module.exports = merge(baseConfig, {
             }
           }
         }
-      }
+    }
 })

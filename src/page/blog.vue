@@ -7,6 +7,10 @@
 export default {
     
 }
+let res = new Promise((resolve, reject) => {
+    resolve(2);
+})
+console.log(res)
 </script>
 
 <style scoped>
@@ -14,6 +18,8 @@ export default {
         width: 50px;
         height: 50px;
         background: red;
+        background: url('../asset/pic.png');
+        background-size: contain;
     }
 </style>
 

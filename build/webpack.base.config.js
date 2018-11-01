@@ -2,13 +2,15 @@ let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
+
 module.exports = {
     entry: {
         index: path.resolve(__dirname, '../src/main.js')
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: 'index.js'
+        filename: 'static/js/index.js',
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -27,11 +29,23 @@ module.exports = {
             },
            {
                test: /\.css$/,
-               use: ['style-loader', 'css-loader']
+               use: ["style-loader",'css-loader']
            },
            {
                test: /\.ts/,
                loader: 'ts-loader'
+           },
+           {
+               test: /\.(jpg|png|jpeg)/,
+               use: [
+                   {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 30,
+                        name: 'static/img/[name].[hash].[ext]'
+                    }
+                   }
+               ]
            }
         ]
     },
@@ -48,8 +62,5 @@ module.exports = {
         new CleanWebpackPlugin(path.resolve(__dirname, '../dist/'),{allowExternal:true}),
         new HtmlWebpackPlugin({template: path.resolve(__dirname, '../index.html')}),
         new VueLoaderPlugin()
-    ],
-    devServer: {
-        contentBase: path.resolve(__dirname, '../dist')
-    }
+    ]
 }
