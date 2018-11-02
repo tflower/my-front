@@ -1,19 +1,20 @@
 <template>
     <div class="p-index">
-        首页+1
-        首页+1
-        首页+1
-        首页+1
-        首页+1
-        首页+1
-        首页+1
-        首页+1
-        首页+1
+        <div @click="goto">点击跳转到商品页2</div>
     </div>
 </template>
 <script>
 export default {
-    name: 'index_hot'
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+        goto() {
+            this.$router.push('/good/two')
+        }
+    }
 }
 </script>
 
@@ -21,7 +22,7 @@ export default {
     .p-index{
         width: 50px;
         height: 80px;
-        background: red;
+        background: green;
         color:#fff;
     }
 </style>

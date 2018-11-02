@@ -20,7 +20,6 @@ baseConfig.module.rules.push(
       exclude: /node_modules/
     }
   );
-console.log(baseConfig.module.rules)
 module.exports = merge(baseConfig, {
     mode: 'production',
     entry: {

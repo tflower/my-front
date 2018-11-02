@@ -1,0 +1,83 @@
+[{
+        "title": "商品",
+        "path": "/good/",
+        "hidden": false,
+        "childrenList": [{
+                "title": "商品1",
+                "path": "one",
+                "ismenu": true,
+                "hidden": false,
+                "component": "index"
+            },
+            {
+                "title": "商品2",
+                "path": "two",
+                "ismenu": false,
+                "hidden": false,
+                "component": "blog"
+            },
+            {
+                "title": "商品3",
+                "path": "three",
+                "ismenu": true,
+                "hidden": false,
+                "component": "git"
+            }
+        ]
+    },
+    {
+        "title": "资产",
+        "path": "/asset/",
+        "hidden": true,
+        "childrenList": [{
+                "title": "资产1",
+                "path": "one",
+                "ismenu": true,
+                "hidden": false,
+                "component": "index"
+            },
+            {
+                "title": "资产2",
+                "path": "two",
+                "ismenu": true,
+                "hidden": false,
+                "component": "blog"
+            },
+            {
+                "title": "资产3",
+                "path": "three",
+                "ismenu": true,
+                "hidden": false,
+                "component": "git"
+            }
+        ]
+    },
+    {
+        "title": "推广",
+        "path": "/promto/",
+        "hidden": false,
+        "childrenList": [{
+                "title": "推广1",
+                "path": "one",
+                "ismenu": true,
+                "hidden": true,
+                "component": "index"
+            },
+            {
+                "title": "推广2",
+                "path": "two",
+                "ismenu": true,
+                "hidden": false,
+                "component": "blog"
+            },
+            {
+                "title": "推广3",
+                "path": "three",
+                "ismenu": true,
+                "hidden": false,
+                "component": "git"
+            }
+        ]
+    }
+
+]

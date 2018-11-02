@@ -28,10 +28,6 @@ module.exports = {
                 }
             },
            {
-               test: /\.css$/,
-               use: ["style-loader",'css-loader']
-           },
-           {
                test: /\.ts/,
                loader: 'ts-loader'
            },
@@ -41,8 +37,20 @@ module.exports = {
                    {
                     loader: 'url-loader',
                     options: {
-                        limit: 30,
-                        name: 'static/img/[name].[hash].[ext]'
+                        limit: 30000,
+                        name: 'static/img/[name].[hash:7].[ext]'
+                    }
+                   }
+               ]
+           },
+           {
+               test: /\.(ttf|woff)/,
+               use: [
+                   {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 30000,
+                        name: 'static/font/[name].[hash:7].[ext]'
                     }
                    }
                ]
@@ -54,6 +62,7 @@ module.exports = {
             '@Component': path.resolve(__dirname, '../src/component/'),
             '@Asset': path.resolve(__dirname, '../src/asset/'),
             '@Page': path.resolve(__dirname, '../src/page/'),
+            '@Tool': path.resolve(__dirname, '../src/tool/'),
             'vue$': 'vue/dist/vue.esm.js'
         },
         extensions: ['.vue', '.wasm', '.mjs', '.js', '.json']

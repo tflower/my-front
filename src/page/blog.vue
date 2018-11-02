@@ -4,23 +4,22 @@
     </div>
 </template>
 <script>
+import Bus from '@Tool/bus'
 export default {
-    
+    data() {
+        return {
+
+        }
+    },
+    beforeRouteEnter(to, from, next){
+        Bus.setActivePath('/good/one');
+        next();
+    }
 }
-let res = new Promise((resolve, reject) => {
-    resolve(2);
-})
-console.log(res)
 </script>
 
 <style scoped>
-    .p-blog{
-        width: 50px;
-        height: 50px;
-        background: red;
-        background: url('../asset/pic.png');
-        background-size: contain;
-    }
+
 </style>
 
 
