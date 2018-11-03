@@ -2,7 +2,7 @@ let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
-
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
     entry: {
         index: path.resolve(__dirname, '../src/main.js')
@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'static/js/index.js',
-        publicPath: '/'
+        publicPath: '/fsdfsf/'
     },
     module: {
         rules: [
@@ -27,10 +27,6 @@ module.exports = {
                     loader: 'babel-loader'
                 }
             },
-           {
-               test: /\.css$/,
-               use: ["style-loader",'css-loader']
-           },
            {
                test: /\.ts/,
                loader: 'ts-loader'
@@ -54,13 +50,15 @@ module.exports = {
             '@Component': path.resolve(__dirname, '../src/component/'),
             '@Asset': path.resolve(__dirname, '../src/asset/'),
             '@Page': path.resolve(__dirname, '../src/page/'),
-            'vue$': 'vue/dist/vue.esm.js'
+            'vue$': 'vue/dist/vue.esm.js',
+            'echarts': path.resolve(__dirname, '../src/asset/tool/echart.js'),
         },
         extensions: ['.vue', '.wasm', '.mjs', '.js', '.json']
     },
     plugins: [
         new CleanWebpackPlugin(path.resolve(__dirname, '../dist/'),{allowExternal:true}),
-        new HtmlWebpackPlugin({template: path.resolve(__dirname, '../index.html')}),
-        new VueLoaderPlugin()
+        new HtmlWebpackPlugin({template: path.resolve(__dirname, '../index.html'),publicPath: '/'}),
+        new VueLoaderPlugin(),
+        new BundleAnalyzerPlugin()
     ]
 }

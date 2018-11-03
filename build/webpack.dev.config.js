@@ -3,14 +3,22 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.config');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+baseConfig.module.rules.push(
+    {
+        test: /\.css$/,
+        use: ["style-loader",'css-loader']
+    }
+);
 module.exports = merge(baseConfig, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        hot: true
+        hot: true,
+        publicPath:'/abc/'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         // new BundleAnalyzerPlugin()
     ]
 })
+
