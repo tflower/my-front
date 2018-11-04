@@ -2,23 +2,42 @@
 
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Index from '@Page/index.vue'
-import Blog from '@Page/blog.vue'
-
+import Bus from '@Tool/bus'
+import MENUJSON from '../menu.json'
+import Login from '../layout/login'
+import Layout from '../layout/layout'
+import NotFound from '../layout/notfound'
+import {geneRoute} from './generoute'
 Vue.use(VueRouter)
-const router = new VueRouter(
-    {
+
+const routes = geneRoute(MENUJSON)
+
+Bus.setRoutesInfo(routes);
+
+
+const router = new VueRouter({
         routes:[
             {
-                path: '/',
-                component: Index
-            },
-            {
-                path: '/blog',
-                component: Blog
+                path:'/login',
+                component: Login
             }
         ]
+        // mode: 'history'
+});
+router.addRoutes([
+    {
+        path:'/',
+        redirect: '/program/detail',
+        component: Layout,
+        children: routes
+    },
+    {
+        path:'/*',
+        component: NotFound
     }
-);
-
+]);
+router.beforeEach((to, from, next) => {
+    Bus.setRoutesInfo('');
+    next()
+})
 export default router;

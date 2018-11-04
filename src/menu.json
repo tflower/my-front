@@ -1,0 +1,76 @@
+[{
+        "title": "项目管理",
+        "path": "/program/",
+        "hidden": false,
+        "childrenList": [{
+                "title": "项目详情",
+                "path": "detail",
+                "ismenu": true,
+                "hidden": false,
+                "component": "detail"
+            },
+            {
+                "title": "添加项目",
+                "path": "addpro",
+                "ismenu": false,
+                "hidden": false,
+                "component": "addpro"
+            }
+        ]
+    },
+    {
+        "title": "资产",
+        "path": "/asset/",
+        "hidden": true,
+        "childrenList": [{
+                "title": "资产1",
+                "path": "one",
+                "ismenu": true,
+                "hidden": false,
+                "component": "index"
+            },
+            {
+                "title": "资产2",
+                "path": "two",
+                "ismenu": true,
+                "hidden": false,
+                "component": "blog"
+            },
+            {
+                "title": "资产3",
+                "path": "three",
+                "ismenu": true,
+                "hidden": false,
+                "component": "git"
+            }
+        ]
+    },
+    {
+        "title": "推广",
+        "path": "/promto/",
+        "hidden": true,
+        "childrenList": [{
+                "title": "推广1",
+                "path": "one",
+                "ismenu": true,
+                "hidden": true,
+                "component": "index"
+            },
+            {
+                "title": "推广2",
+                "path": "two",
+                "ismenu": true,
+                "hidden": false,
+                "component": "blog"
+            },
+            {
+                "title": "推广3",
+                "path": "three",
+                "ismenu": true,
+                "hidden": false,
+                "component": "git"
+            }
+        ]
+    }
+
+]

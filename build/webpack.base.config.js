@@ -2,7 +2,7 @@ let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
     entry: {
         index: path.resolve(__dirname, '../src/main.js')
@@ -10,7 +10,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'static/js/index.js',
-        publicPath: '/fsdfsf/'
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -37,8 +37,20 @@ module.exports = {
                    {
                     loader: 'url-loader',
                     options: {
-                        limit: 30,
-                        name: 'static/img/[name].[hash].[ext]'
+                        limit: 30000,
+                        name: 'static/img/[name].[hash:7].[ext]'
+                    }
+                   }
+               ]
+           },
+           {
+               test: /\.(ttf|woff)/,
+               use: [
+                   {
+                    loader: 'url-loader',
+                    options: {
+                        limit: 30000,
+                        name: 'static/font/[name].[hash:7].[ext]'
                     }
                    }
                ]
@@ -50,8 +62,8 @@ module.exports = {
             '@Component': path.resolve(__dirname, '../src/component/'),
             '@Asset': path.resolve(__dirname, '../src/asset/'),
             '@Page': path.resolve(__dirname, '../src/page/'),
-            'vue$': 'vue/dist/vue.esm.js',
-            'echarts': path.resolve(__dirname, '../src/asset/tool/echart.js'),
+            '@Tool': path.resolve(__dirname, '../src/tool/'),
+            'vue$': 'vue/dist/vue.esm.js'
         },
         extensions: ['.vue', '.wasm', '.mjs', '.js', '.json']
     },
@@ -59,6 +71,6 @@ module.exports = {
         new CleanWebpackPlugin(path.resolve(__dirname, '../dist/'),{allowExternal:true}),
         new HtmlWebpackPlugin({template: path.resolve(__dirname, '../index.html'),publicPath: '/'}),
         new VueLoaderPlugin(),
-        new BundleAnalyzerPlugin()
+        // new BundleAnalyzerPlugin()
     ]
 }

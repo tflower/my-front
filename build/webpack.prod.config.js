@@ -32,7 +32,7 @@ module.exports = merge(baseConfig, {
         new UglifyJsPlugin(),
         // new BundleAnalyzerPlugin(),
         new OptimizeCssAssetsPlugin(),
-        new ExtractTextPlugin({filename: 'main.[hash].css'})
+        new ExtractTextPlugin({filename: 'main.[hash].css',allChunks: true})
     ],
     optimization: {
         splitChunks: {
