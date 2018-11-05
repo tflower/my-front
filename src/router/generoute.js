@@ -3,7 +3,7 @@
 // import Git from '@Page/git.vue'
 
 const Detail = () => import(/* webpackChunkName: "detail" */ '@Page/detail.vue')
-const AddPro = () => import(/* webpackChunkName: "group-foo" */ '@Page/addpro.vue')
+const AddPro = () => import(/* webpackChunkName: "addpro" */ '@Page/addpro.vue')
 
 const COMPONETT_OBJ = {
     detail: Detail,

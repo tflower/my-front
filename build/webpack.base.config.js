@@ -44,10 +44,22 @@ module.exports = {
                ]
            },
            {
-               test: /\.(ttf|woff)/,
+               test: /\.(eot|woff|woff2|ttf)([\\?]?.*)$/, 
                use: [
                    {
                     loader: 'url-loader',
+                    options: {
+                        limit: 30000,
+                        name: 'static/font/[name].[hash:7].[ext]'
+                    }
+                   }
+               ]
+           },
+           {
+               test: /\.(eot|woff|woff2|ttf)([\\?]?.*)$/, 
+               use: [
+                   {
+                    loader: 'file-loader',
                     options: {
                         limit: 30000,
                         name: 'static/font/[name].[hash:7].[ext]'

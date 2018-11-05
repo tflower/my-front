@@ -19,29 +19,22 @@
         ]
     },
     {
-        "title": "资产",
-        "path": "/asset/",
-        "hidden": true,
+        "title": "权限",
+        "path": "/admin/",
+        "hidden": false,
         "childrenList": [{
-                "title": "资产1",
-                "path": "one",
+                "title": "添加用户",
+                "path": "manager",
                 "ismenu": true,
                 "hidden": false,
-                "component": "index"
+                "component": "detail"
             },
             {
-                "title": "资产2",
-                "path": "two",
+                "title": "菜单管理",
+                "path": "menu",
                 "ismenu": true,
                 "hidden": false,
-                "component": "blog"
-            },
-            {
-                "title": "资产3",
-                "path": "three",
-                "ismenu": true,
-                "hidden": false,
-                "component": "git"
+                "component": "addpro"
             }
         ]
     },

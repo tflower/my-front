@@ -9,7 +9,7 @@
         <el-main>
             <el-form ref="addform" label-position="left" :rules="proRules" :model="programData" label-width="80px">
                 <el-form-item label="项目名称" prop="name">
-                    <el-input v-model="programData.name" style="width:300px" :clearable="true"></el-input>
+                    <el-input v-model="programData.name" style="width:300px" clearable></el-input>
                 </el-form-item>
                 <el-form-item label="项目类型" prop="type">
                     <el-select v-model="programData.type" placeholder="请选择项目类型">
@@ -19,10 +19,10 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="项目地址" prop="originUrl">
-                    <el-input v-model="programData.originUrl" style="width:600px" :clearable="true"></el-input>
+                    <el-input v-model="programData.originUrl" style="width:600px" clearable></el-input>
                 </el-form-item>
                 <el-form-item label="描述" prop="desc">
-                    <el-input type="textarea" v-model="programData.desc" style="width:600px" :clearable="true"></el-input>
+                    <el-input type="textarea" v-model="programData.desc" style="width:600px"></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="addPro('addform')">立即创建</el-button>

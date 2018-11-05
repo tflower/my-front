@@ -14,10 +14,9 @@ baseConfig.module.rules.push(
           use: [
             'css-loader'
           ],
-          fallback: 'style-loader'
+          fallback: 'vue-style-loader'
         }
-      ),
-      exclude: /node_modules/
+      )
     }
   );
 module.exports = merge(baseConfig, {

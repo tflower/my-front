@@ -10,7 +10,7 @@
             </el-button>
             <el-form :inline="true" :model="searchParams" class="mt20">
                 <el-form-item label="项目名称">
-                    <el-input v-model="searchParams.name" placeholder="项目名称"></el-input>
+                    <el-input v-model="searchParams.name" placeholder="项目名称" clearable></el-input>
                 </el-form-item>
                 <el-form-item label="项目类型">
                     <el-select v-model="searchParams.type" placeholder="项目类型">
